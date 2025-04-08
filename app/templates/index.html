@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Business Valuator</title>
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI Business Valuation Tool</h1>
+        
+        <form method="post" action="/valuate">
+            <label>Years in Business:</label>
+            <input type="number" name="years" value="{{ years or 5 }}" required>
+            
+            <label>Number of Employees:</label>
+            <input type="number" name="employees" value="{{ employees or 10 }}" required>
+            
+            <label>Annual Revenue (USD):</label>
+            <input type="number" step="0.01" name="revenue" value="{{ revenue or 100000 }}" required>
+            
+            <button type="submit">Calculate Valuation</button>
+        </form>
+
+        {% if valuation %}
+        <div class="result">
+            <h2>Estimated Business Value: {{ valuation }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
